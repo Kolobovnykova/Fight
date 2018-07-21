@@ -1,7 +1,9 @@
+import Fighter from './fighter'
+
 // Create class ImprovedFighter
-class ImprovedFighter extends Fighter {
+export default class ImprovedFighter extends Fighter {
     constructor(name, power, health) {
-        super(name, power, health);
+        super(name, power, health = 110);
     }
 
     doubleHit(enemy, point) {

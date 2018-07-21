@@ -1,6 +1,6 @@
 // Create class Fighter
-class Fighter {
-    constructor(name, power, health){
+export default class Fighter {
+    constructor(name, power, health) {
         this.name = name;
         this.health = health;
         this.power = power;
@@ -8,19 +8,23 @@ class Fighter {
 
     setDamage(damage) {
         this.health = this.health - damage;
-        console.log('${this.name} health: ${this.health}');
+        if (this.health < 0){
+            this.health = 0;
+        }
+        console.log(`${this.name}'s health: ${this.health}`);
     }
 
     hit(enemy, point) {
-        damage = point * this.power;
+        let damage = point * this.power;
+        console.log(`Damage ${damage}`);
         enemy.setDamage(damage);
     }
 
     knockout() {
-        console.log('time is over');
         let promise = new Promise((resolve, reject) => {
+            console.log('Game over');
             setTimeout(() => {
-                resolve("game over");
+                resolve();
             }, 500);
         });
 
